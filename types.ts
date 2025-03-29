@@ -1,3 +1,18 @@
+export type Ship = {
+  mmsi: number;
+  imo: string | null;
+  name: string;
+  arrived: string | null;
+  vtype: number;
+  vessel_type: string;
+  flag: string;
+  gt: string | null;
+  dwt: string | null;
+  built: string | null;
+  length: number;
+  width: number;
+};
+
 export const vtypeMap: Record<number, string> = {
     0: "Unknown Vessel Type",
     3: "Tug, Pilot",
