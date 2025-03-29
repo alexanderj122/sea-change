@@ -20,7 +20,7 @@ export function ShipCard({ ship }: { ship: Ship }) {
   );
 
   return (
-    <li className="p-4 border rounded shadow">
+    <li className="p-4 border rounded-2xl shadow flex flex-col gap-2 items-center">
       <strong className="text-lg">{ship.name}</strong> - {ship.vessel_type}
       <br />
       Gross Tonnage: {ship.gt || "N/A"}
@@ -28,7 +28,7 @@ export function ShipCard({ ship }: { ship: Ship }) {
       Estimated Power:{" "}
       {estimatedPower ? `${estimatedPower.toFixed(0)} kW` : "N/A"}
       {emissionsKg && (
-        <div className="text-sm text-gray-600 mt-1">
+        <div className="text-sm text-red-600 mt-1">
           Estimated CO₂ Emissions (1h): {emissionsKg.toFixed(1)} kg
         </div>
       )}
@@ -36,11 +36,11 @@ export function ShipCard({ ship }: { ship: Ship }) {
         <span className="font-medium">Estimated Cost per 1 hour:</span>
         <ul className="ml-4 list-disc">
           <li>
-            Plugged into Grid:{" "}
+            Plugged into Grid: £
             {getCost(energyCostsGBPPerKWh["GridAverage"])?.toFixed(2) || "N/A"}
           </li>
           <li>
-            Using Engines (incl. Emissions Tax):{" "}
+            Using Engines (incl. Emissions Tax): £
             {getCost(energyCostsGBPPerKWh["MarineFuel"], true)?.toFixed(2) ||
               "N/A"}
           </li>

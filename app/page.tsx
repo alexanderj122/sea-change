@@ -38,36 +38,39 @@ export default function Home() {
 
   return (
     <div className="p-4">
-      <div className="relative inline-block mb-4">
-        <button
-          className="px-4 py-2 border rounded bg-black text-white"
-          onClick={toggleFilter}
-        >
-          Filter
-        </button>
+      <div className="flex justify-between items-center mb-4">
+        <div className="relative inline-block mb-4">
+          <button
+            className="px-4 py-2 border rounded bg-black text-white"
+            onClick={toggleFilter}
+          >
+            Filter
+          </button>
 
-        {showFilter && (
-          <div className="absolute bg-black text-white border rounded shadow-md mt-2 p-2 w-64 z-10 max-h-64 overflow-y-auto">
-            {uniqueVtypes.map((type) => (
-              <label key={type} className="flex items-center gap-2 p-1">
-                <input
-                  type="checkbox"
-                  checked={!selectedVtypes.includes(type)}
-                  onChange={() => toggleVtype(type)}
-                />
-                {type}
-              </label>
-            ))}
-          </div>
-        )}
+          {showFilter && (
+            <div className="absolute bg-black text-white border rounded shadow-md mt-2 p-2 w-64 z-10 max-h-64 overflow-y-auto">
+              {uniqueVtypes.map((type) => (
+                <label key={type} className="flex items-center gap-2 p-1">
+                  <input
+                    type="checkbox"
+                    checked={!selectedVtypes.includes(type)}
+                    onChange={() => toggleVtype(type)}
+                  />
+                  {type}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+        <h1 className="text-xl font-bold mb-4">Ships at Portsmouth Port</h1>
       </div>
-
-      <h1 className="text-xl font-bold mb-4">Ships at Portsmouth Port</h1>
-      <ul className="space-y-4">
-        {filteredShips.map((ship) => (
-          <ShipCard key={ship.mmsi} ship={ship} />
-        ))}
-      </ul>
+      <div className="flex flex-col content-center">
+        <ul className="space-y-4">
+          {filteredShips.map((ship) => (
+            <ShipCard key={ship.mmsi} ship={ship} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
