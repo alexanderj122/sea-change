@@ -36,13 +36,17 @@ export default function PortsmouthShipsPage() {
       });
   }, []);
 
+  // Define vtypes you want to exclude
+  const excludedVTypes = [3, 6, 9, 10];
+  const filteredShips = ships.filter((ship) => !excludedVTypes.includes(ship.vtype));
+
   if (loading) return <p>Loading ships...</p>;
 
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">Ships at Portsmouth Port</h1>
       <ul className="space-y-2">
-        {ships.map((ship) => (
+        {filteredShips.map((ship) => (
           <li key={ship.mmsi} className="p-2 border rounded">
             <strong>{ship.name}</strong> - {ship.vessel_type}
           </li>
