@@ -1,4 +1,4 @@
-import { emissionsTaxPerKWh, energyCostsGBPPerKWh } from "@/types";
+import { emissionsTaxPerKWh, energyCostsGBPPerKWh, Ship } from "@/types";
 import { estimatePower } from "./estimate-power";
 
 export function ShipCard({ ship }: { ship: Ship }) {
@@ -10,7 +10,9 @@ export function ShipCard({ ship }: { ship: Ship }) {
 
   const getCost = (rate: number, includeTax = false) =>
     estimatedPower != null
-      ? estimatedPower * duration * (rate + (includeTax ? emissionsTaxPerKWh : 0))
+      ? estimatedPower *
+        duration *
+        (rate + (includeTax ? emissionsTaxPerKWh : 0))
       : null;
 
   const alternativeSources = Object.entries(energyCostsGBPPerKWh).filter(
